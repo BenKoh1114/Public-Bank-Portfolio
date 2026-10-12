@@ -1,1 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship E-Portfolio | Public Bank</title>
+    
+    <!-- Load Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Load FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        pb: {
+                            red: '#e31837', // Public Bank Red Accent
+                            dark: '#1a1f2b',
+                            card: '#ffffff',
+                            cardDark: '#1e293b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
+    <style>
+        /* Custom styles for the timeline line */
+        .timeline-container {
+            position: relative;
+        }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 1.25rem; /* 20px */
+            width: 2px;
+            background-color: #cbd5e1; /* Tailwind slate-300 */
+            border-radius: 9999px;
+        }
+        .dark .timeline-container::before {
+            background-color: #475569; /* Tailwind slate-600 */
+        }
+        
+        /* Smooth transitions for theme switching */
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 0.75rem; /* Match Tailwind's rounded-xl */
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+        .dark .portfolio-img {
+            border-color: #334155;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-200 antialiased min-h-screen flex flex-col">
+
+    <header class="bg-white dark:bg-pb-dark border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50 shadow-sm transition-colors duration-300">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+                
+                <div class="text-center sm:text-left">
+                    <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white flex items-center justify-center sm:justify-start gap-3">
+                        <i class="fa-solid fa-briefcase text-pb-red"></i>
+                        Internship Logbook
+                    </h1>
+                    <p class="text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">
+                        Public Bank Berhad &bull; Apr 2026 - Sep 2026
+                    </p>
+                </div>
+
+                <button id="theme-toggle" class="p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-pb-red">
+                    <i id="theme-icon" class="fa-solid fa-moon text-lg"></i>
+                </button>
+
+            </div>
+
+            <nav class="flex justify-center sm:justify-start space-x-8 mt-2 overflow-x-auto">
+                <button onclick="switchTab('company')" id="tab-company" class="tab-btn active pb-4 px-1 border-b-4 border-pb-red text-pb-red font-semibold whitespace-nowrap transition-colors">
+                    <i class="fa-regular fa-building mr-2"></i>About the Company
+                </button>
+                <button onclick="switchTab('status')" id="tab-status" class="tab-btn pb-4 px-1 border-b-4 border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 font-medium whitespace-nowrap transition-colors">
+                    <i class="fa-solid fa-chart-line mr-2"></i>My Status
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+
+        <section id="company" class="tab-content active">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Main Overview Card -->
+                <div class="md:col-span-2 bg-white dark:bg-pb-cardDark rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-100 dark:border-slate-800 transition-colors">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-pb-red">
+                            <i class="fa-solid fa-landmark text-xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Public Bank Berhad</h2>
+                            <p class="text-sm font-medium text-pb-red">Financial Services & Banking</p>
+                        </div>
+                    </div>
+
+                    <img src="https://placehold.co/800x350/f1f5f9/475569?text=Insert+Company+HQ+or+Department+Photo" alt="Public Bank Office" class="portfolio-img mb-6">
+
+                    <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-3">Company Overview</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                        Public Bank Berhad is one of the top-tier banks in Malaysia, renowned for its strong financial performance, consistent profitability, and prudent management. The bank provides a comprehensive range of financial services including retail banking, commercial banking, Islamic banking, and wealth management.
+                    </p>
+                    <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-3">Department: Data & Operations</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        The department is responsible for aggregating, processing, and analyzing financial records to ensure accurate daily reporting. It plays a critical role in bridging raw transactional data with executive decision-making.
+                    </p>
+                </div>
+
+                <!-- Info Sidebar Cards -->
+                <div class="flex flex-col gap-6">
+                    <div class="bg-white dark:bg-pb-cardDark rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-800 transition-colors">
+                        <h3 class="text-base font-semibold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-crosshairs text-pb-red"></i> Role Objectives
+                        </h3>
+                        <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check mt-1 text-green-500"></i>
+                                <span>Streamline daily reporting workflows.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check mt-1 text-green-500"></i>
+                                <span>Transform and clean large datasets.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check mt-1 text-green-500"></i>
+                                <span>Automate repetitive tasks using VBA.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check mt-1 text-green-500"></i>
+                                <span>Reduce manual calculation errors to 0%.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white dark:bg-pb-cardDark rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-800 transition-colors">
+                        <h3 class="text-base font-semibold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-toolbox text-pb-red"></i> Tech Stack Used
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full">MS Excel</span>
+                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-semibold rounded-full">Power Query</span>
+                            <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 text-xs font-semibold rounded-full">VBA Macros</span>
+                            <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-xs font-semibold rounded-full">Data Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="status" class="tab-content">
+            <div class="bg-white dark:bg-pb-cardDark rounded-2xl p-6 sm:p-10 shadow-sm border border-slate-100 dark:border-slate-800 transition-colors">
+                
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-8 flex items-center gap-3">
+                    <i class="fa-solid fa-list-check text-pb-red"></i> 26-Week Progress Log
+                </h2>
+
+                <div class="timeline-container pl-5 sm:pl-0 sm:ml-5">
+                    
+                    <!-- Week 1-4 -->
+                    <div class="relative pl-8 sm:pl-12 py-6 group">
+                        <div class="absolute left-[-0.3rem] top-8 w-4 h-4 rounded-full bg-white dark:bg-pb-cardDark border-4 border-pb-red z-10 transition-transform group-hover:scale-125"></div>
+                        <span class="inline-block px-3 py-1 mb-2 text-xs font-bold text-pb-red bg-red-50 dark:bg-red-900/20 rounded-full">
+                            April 2026 (Weeks 1 - 4)
+                        </span>
+                        <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">Orientation & Data Familiarization</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+                            Completed onboarding and HR briefings. Spent the first month understanding the legacy reporting structures and observing how the team handles raw data imports. Began mapping out the bottlenecks in the current manual copy-pasting process.
+                        </p>
+                    </div>
+
+                    <!-- Week 5-8 -->
+                    <div class="relative pl-8 sm:pl-12 py-6 group">
+                        <div class="absolute left-[-0.3rem] top-8 w-4 h-4 rounded-full bg-white dark:bg-pb-cardDark border-4 border-pb-red z-10 transition-transform group-hover:scale-125"></div>
+                        <span class="inline-block px-3 py-1 mb-2 text-xs font-bold text-pb-red bg-red-50 dark:bg-red-900/20 rounded-full">
+                            May 2026 (Weeks 5 - 8)
+                        </span>
+                        <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">Introduction to Power Query</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+                            Proposed shifting from manual data entry to dynamic data transformation. Built my first multi-file append query using Power Query to consolidate daily branch reports into a single master sheet automatically.
+                        </p>
+                        <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
+                            <p class="text-sm text-slate-500 dark:text-slate-400 font-mono">
+                                <i class="fa-solid fa-code text-pb-red mr-2"></i>Key achievement: Reduced consolidation time by 20%.
+                            </p>
+                        </div>
+
+                        <div class="mt-5 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm group-hover:shadow-md transition-shadow">
+                            <img src="https://placehold.co/600x300/f8fafc/334155?text=Insert+Power+Query+or+Dashboard+Screenshot" alt="Dashboard Screenshot" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500">
+                        </div>
+                    </div>
+
+                    <!-- Week 9-14 -->
+                    <div class="relative pl-8 sm:pl-12 py-6 group">
+                        <div class="absolute left-[-0.3rem] top-8 w-4 h-4 rounded-full bg-white dark:bg-pb-cardDark border-4 border-pb-red z-10 transition-transform group-hover:scale-125"></div>
+                        <span class="inline-block px-3 py-1 mb-2 text-xs font-bold text-pb-red bg-red-50 dark:bg-red-900/20 rounded-full">
+                            June - Mid July 2026 (Weeks 9 - 14)
+                        </span>
+                        <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">Advanced Excel Functions & Formula Logic</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+                            Re-engineered the dashboard logic. Replaced hundreds of heavy, volatile VLOOKUPs with optimized <code>INDEX/MATCH</code>, <code>LET</code>, and <code>VSTACK</code> functions. This significantly reduced the file size and prevented Excel from freezing during calculations.
+                        </p>
+                    </div>
+
+                    <!-- Week 15-20 -->
+                    <div class="relative pl-8 sm:pl-12 py-6 group">
+                        <div class="absolute left-[-0.3rem] top-8 w-4 h-4 rounded-full bg-white dark:bg-pb-cardDark border-4 border-pb-red z-10 transition-transform group-hover:scale-125"></div>
+                        <span class="inline-block px-3 py-1 mb-2 text-xs font-bold text-pb-red bg-red-50 dark:bg-red-900/20 rounded-full">
+                            Late July - Aug 2026 (Weeks 15 - 20)
+                        </span>
+                        <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">VBA Automation Breakthrough</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+                            Started writing custom VBA scripts to handle repetitive formatting, data cleansing, and email distribution. Created a 1-click macro button that processes the daily report, formats the tables, and saves it in the shared drive.
+                        </p>
+                        <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-400 space-y-1 ml-2">
+                            <li>Automated error handling for missing data.</li>
+                            <li>Report generation time dropped from 45 mins to 5 mins.</li>
+                        </ul>
+
+                        <div class="mt-5 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm group-hover:shadow-md transition-shadow">
+                            <img src="https://placehold.co/600x250/1e293b/cbd5e1?text=Insert+VBA+Macro+Code+Snippet" alt="VBA Code" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500">
+                        </div>
+                    </div>
+
+                    <!-- Week 21-26 -->
+                    <div class="relative pl-8 sm:pl-12 py-6 group">
+                        <!-- Last dot (change color to indicate completion) -->
+                        <div class="absolute left-[-0.3rem] top-8 w-4 h-4 rounded-full bg-pb-red border-4 border-pb-red z-10 transition-transform group-hover:scale-125 shadow-[0_0_10px_rgba(227,24,55,0.6)]"></div>
+                        <span class="inline-block px-3 py-1 mb-2 text-xs font-bold text-white bg-pb-red rounded-full shadow-sm">
+                            September 2026 (Weeks 21 - 26)
+                        </span>
+                        <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">Project Handoff & Wrapping Up</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+                            Finalized the documentation for all Power Query models and VBA scripts. Conducted a training session for the department staff on how to use the new automated tools. Completed my final practicum presentation to the supervisor and finalized my HR exit process.
+                        </p>
+
+                        <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <img src="https://placehold.co/400x250/e2e8f0/475569?text=Final+Presentation+Photo" alt="Presentation" class="portfolio-img h-40 hover:brightness-95 transition-all cursor-pointer">
+                            <img src="https://placehold.co/400x250/e2e8f0/475569?text=Farewell+Lunch+Photo" alt="Team Lunch" class="portfolio-img h-40 hover:brightness-95 transition-all cursor-pointer">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="mt-auto py-6 text-center text-slate-500 dark:text-slate-400 text-sm border-t border-slate-200 dark:border-slate-800">
+        <p>&copy; 2026 Internship E-Portfolio. Built for Public Bank Practicum.</p>
+    </footer>
+
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            // Hide all tab content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Reset all tab buttons styling
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('border-pb-red', 'text-pb-red', 'font-semibold');
+                btn.classList.add('border-transparent', 'text-slate-500', 'font-medium');
+            });
+
+            // Show selected content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Style selected button
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            activeBtn.classList.remove('border-transparent', 'text-slate-500', 'font-medium');
+            activeBtn.classList.add('border-pb-red', 'text-pb-red', 'font-semibold');
+        }
+
+        // Dark Mode Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        // Check local storage or system preference on load
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            html.classList.remove('dark');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+
+        // Toggle Event Listener
+        themeToggleBtn.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+    </script>
+</body>
+</html>
