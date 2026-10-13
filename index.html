@@ -62,9 +62,10 @@
 
         <!-- ABOUT THE COMPANY TAB -->
         <section id="company" class="tab-content active">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Left Column: Company & Unit Overview -->
-                <div class="md:col-span-2 space-y-6">
+            <div class="space-y-6">
+                <!-- Top Row: Company Info & Role Objectives Side-by-Side -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Company Card -->
                     <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                         <div class="flex items-center gap-4 mb-6">
                             <div class="w-14 h-14 rounded-full bg-bank-light dark:bg-red-900/30 flex items-center justify-center shrink-0">
@@ -84,40 +85,42 @@
                         </div>
                     </div>
 
-                    <!-- Role Objectives -->
-                    <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <div class="flex items-center gap-3 mb-4">
-                            <i data-lucide="target" class="w-6 h-6 text-bank-red"></i>
-                            <h3 class="text-xl font-bold">Role Objectives & Focus</h3>
+                    <!-- Role Objectives & Tech Stack Combined Column -->
+                    <div class="space-y-6">
+                        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+                            <div class="flex items-center gap-3 mb-4">
+                                <i data-lucide="target" class="w-6 h-6 text-bank-red"></i>
+                                <h3 class="text-xl font-bold">Role Objectives & Focus</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                During my 6-month practicum, my primary objective was to handle data transformation, streamline massive daily reporting workflows, and eliminate manual calculation errors using advanced Excel functions, Power Query, and custom VBA macros.
+                            </p>
                         </div>
-                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                            During my 6-month practicum, my primary objective was to handle data transformation, streamline massive daily reporting workflows, and eliminate manual calculation errors using advanced Excel functions, Power Query, and custom VBA macros.
-                        </p>
+
+                        <!-- Tech Stack Badge Card -->
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+                            <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                                <i data-lucide="code" class="w-5 h-5 text-bank-red"></i> Tech Stack & Tools
+                            </h3>
+                            <div class="flex flex-wrap gap-2.5">
+                                <span class="px-3 py-1.5 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 rounded-lg text-sm font-semibold">MS Excel</span>
+                                <span class="px-3 py-1.5 bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800 rounded-lg text-sm font-semibold">Power Query</span>
+                                <span class="px-3 py-1.5 bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800 rounded-lg text-sm font-semibold">VBA Macro</span>
+                                <span class="px-3 py-1.5 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 rounded-lg text-sm font-semibold">Advanced Excel</span>
+                                <span class="px-3 py-1.5 bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800 rounded-lg text-sm font-semibold">UserForm UI</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Right Column: Tech Stack & Company Photo Placeholder -->
-                <div class="space-y-6">
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-                            <i data-lucide="image" class="w-5 h-5 text-bank-red"></i> Company & Workplace
-                        </h3>
-                        <img src="https://placehold.co/600x400/fdf2f2/e31837?text=Public+Bank+Building" alt="Public Bank" class="w-full h-48 object-cover rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm mb-2">
-                        <p class="text-xs text-center text-gray-400">Headquarters / Department Building</p>
-                    </div>
-
-                    <!-- Tech Stack Badge Card with Unique Colors -->
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-                            <i data-lucide="code" class="w-5 h-5 text-bank-red"></i> Tech Stack & Tools
-                        </h3>
-                        <div class="flex flex-wrap gap-2.5">
-                            <span class="px-3 py-1.5 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 rounded-lg text-sm font-semibold">MS Excel</span>
-                            <span class="px-3 py-1.5 bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800 rounded-lg text-sm font-semibold">Power Query</span>
-                            <span class="px-3 py-1.5 bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800 rounded-lg text-sm font-semibold">VBA Macro</span>
-                            <span class="px-3 py-1.5 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 rounded-lg text-sm font-semibold">Advanced Excel</span>
-                            <span class="px-3 py-1.5 bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800 rounded-lg text-sm font-semibold">UserForm UI</span>
-                        </div>
+                <!-- Bottom Row: Full-Width Enlarged Company & Workplace Photo Card -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <i data-lucide="image" class="w-5 h-5 text-bank-red"></i> Company & Workplace
+                    </h3>
+                    <div class="w-full">
+                        <img src="Me.jpeg" alt="Public Bank" class="w-full h-72 sm:h-96 object-cover rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm mb-3">
+                        <p class="text-sm text-center text-gray-400 font-medium uppercase tracking-wide">Headquarters / Department Building</p>
                     </div>
                 </div>
             </div>
