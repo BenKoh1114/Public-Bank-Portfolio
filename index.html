@@ -3,578 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internship Logbook</title>
+    <title>Internship E-Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    colors: { bank: { red: '#e31837', light: '#fdf2f2' } }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        .tab-content { display: none; animation: fadeIn 0.4s ease-out forwards; }
+        body { font-family: 'Inter', sans-serif; background-color: #f4f7f6; }
+        .tab-content { display: none; animation: fadeIn 0.4s ease-in-out; }
         .tab-content.active { display: block; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        /* Custom styling to hide the scrollbar but keep the functionality for the image galleries */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300 antialiased min-h-screen">
+<body class="text-gray-800 antialiased">
 
-    <div class="max-w-5xl mx-auto px-6 py-10">
-        
-        <!-- Header -->
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10">
-            <div>
-                <div class="flex items-center gap-3 mb-2">
-                    <i data-lucide="briefcase" class="w-8 h-8 text-bank-red fill-bank-red"></i>
-                    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Internship Logbook</h1>
-                </div>
-                <p class="text-gray-500 dark:text-gray-400 text-lg">Public Bank Berhad &bull; Apr 2026 - Sep 2026</p>
+    <!-- Header Section -->
+    <header class="bg-gray-900 text-white pt-16 text-center">
+        <div class="max-w-4xl mx-auto px-5">
+            <h1 class="text-4xl font-extrabold mb-3">Internship E-Portfolio</h1>
+            <p class="text-gray-400 text-lg mb-10">Public Bank Berhad | April 2026 - September 2026</p>
+            
+            <!-- Navigation Tabs -->
+            <div class="flex justify-center gap-4 flex-wrap">
+                <button class="tab-btn active px-6 py-3 font-semibold text-gray-400 border-b-4 border-transparent hover:text-white transition-all duration-300" onclick="switchTab('company', this)">About the Company</button>
+                <button class="tab-btn px-6 py-3 font-semibold text-gray-400 border-b-4 border-transparent hover:text-white transition-all duration-300" onclick="switchTab('status', this)">My Status</button>
+                <button class="tab-btn px-6 py-3 font-semibold text-gray-400 border-b-4 border-transparent hover:text-white transition-all duration-300" onclick="switchTab('projects', this)">🚀 Key Achievements</button>
             </div>
-            <button onclick="toggleTheme()" class="p-3 rounded-full bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all focus:outline-none focus:ring-2 focus:ring-bank-red">
-                <i data-lucide="moon" id="theme-icon" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i>
-            </button>
         </div>
+    </header>
 
-        <!-- Navigation Tabs -->
-        <div class="flex border-b border-gray-200 dark:border-gray-700 mb-8 overflow-x-auto no-scrollbar">
-            <button onclick="switchTab('company', this)" class="tab-btn active flex items-center gap-2 px-4 sm:px-6 py-4 text-bank-red font-semibold border-b-2 border-bank-red whitespace-nowrap transition-colors">
-                <i data-lucide="building-2" class="w-4 h-4"></i> About the Company
-            </button>
-            <button onclick="switchTab('status', this)" class="tab-btn flex items-center gap-2 px-4 sm:px-6 py-4 text-gray-500 dark:text-gray-400 font-medium border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 whitespace-nowrap transition-colors">
-                <i data-lucide="activity" class="w-4 h-4"></i> My Status
-            </button>
-            <button onclick="switchTab('projects', this)" class="tab-btn flex items-center gap-2 px-4 sm:px-6 py-4 text-gray-500 dark:text-gray-400 font-medium border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 whitespace-nowrap transition-colors">
-                <i data-lucide="rocket" class="w-4 h-4"></i> Key Projects
-            </button>
-        </div>
-
+    <main class="max-w-4xl mx-auto px-5 py-12">
+        
         <!-- ABOUT THE COMPANY TAB -->
         <section id="company" class="tab-content active">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Left Column: Company & Unit Overview -->
-                <div class="md:col-span-2 space-y-6">
-                    <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-14 h-14 rounded-full bg-bank-light dark:bg-red-900/30 flex items-center justify-center shrink-0">
-                                <i data-lucide="landmark" class="w-6 h-6 text-bank-red"></i>
-                            </div>
-                            <div>
-                                <h2 class="text-2xl font-bold">Public Bank Berhad</h2>
-                                <p class="text-bank-red font-medium text-sm">Financial Services & Banking</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-                            Public Bank Berhad is one of the premier banking groups in Malaysia, renowned for its strong financial performance, prudent management, and exceptional banking services across retail, commercial, and corporate sectors.
-                        </p>
-                        <div class="border-t border-gray-100 dark:border-gray-700 pt-4 space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                            <p><strong>Division:</strong> Hire Purchase Supervision Division (HPSD)</p>
-                            <p><strong>Unit:</strong> Reporting & AKPK and FIS & Administration (SSTF)</p>
-                        </div>
-                    </div>
-
-                    <!-- Role Objectives -->
-                    <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <div class="flex items-center gap-3 mb-4">
-                            <i data-lucide="target" class="w-6 h-6 text-bank-red"></i>
-                            <h3 class="text-xl font-bold">Role Objectives & Focus</h3>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                            During my 6-month practicum, my primary objective was to handle data transformation, streamline massive daily reporting workflows, and eliminate manual calculation errors using advanced Excel functions, Power Query, and custom VBA macros.
-                        </p>
-                    </div>
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                <h2 class="text-2xl font-bold mb-4 text-gray-900">Public Bank Berhad</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                    <p><strong>Division:</strong> Hire Purchase Supervision Division (HPSD)</p>
+                    <p><strong>Unit:</strong> Reporting & AKPK and FIS & Administration (SSTF)</p>
                 </div>
-
-                <!-- Right Column: Tech Stack & Company Photo Placeholder -->
-                <div class="space-y-6">
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-                            <i data-lucide="image" class="w-5 h-5 text-bank-red"></i> Company & Workplace
-                        </h3>
-                        <img src="https://placehold.co/600x400/fdf2f2/e31837?text=Public+Bank+Building" alt="Public Bank" class="w-full h-48 object-cover rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm mb-2">
-                        <p class="text-xs text-center text-gray-400">Headquarters / Department Building</p>
-                    </div>
-
-                    <!-- Tech Stack Badge Card with Unique Colors -->
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-                            <i data-lucide="code" class="w-5 h-5 text-bank-red"></i> Tech Stack & Tools
-                        </h3>
-                        <div class="flex flex-wrap gap-2.5">
-                            <span class="px-3 py-1.5 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 rounded-lg text-sm font-semibold">MS Excel</span>
-                            <span class="px-3 py-1.5 bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800 rounded-lg text-sm font-semibold">Power Query</span>
-                            <span class="px-3 py-1.5 bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800 rounded-lg text-sm font-semibold">VBA Macro</span>
-                            <span class="px-3 py-1.5 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 rounded-lg text-sm font-semibold">Advanced Excel</span>
-                            <span class="px-3 py-1.5 bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800 rounded-lg text-sm font-semibold">UserForm UI</span>
-                        </div>
-                    </div>
-                </div>
+                <hr class="border-gray-200 my-6">
+                <h3 class="text-xl font-bold mb-3">Company Overview</h3>
+                <p class="text-gray-600 mb-6">Write a brief summary of Public Bank's operations, its core business, and the specific role your department plays within the larger organization.</p>
+                
+                <h3 class="text-xl font-bold mb-3">My Role & Objectives</h3>
+                <p class="text-gray-600">During my 6-month practicum, my primary objective was to handle data transformation, streamline reporting workflows, and ultimately eliminate manual calculation errors using advanced Excel functions and VBA macros.</p>
             </div>
         </section>
 
-        <!-- MY STATUS TAB -->
+        <!-- MY STATUS TAB (The Diary Logbook) -->
         <section id="status" class="tab-content">
-            <div class="relative border-l-2 border-gray-200 dark:border-gray-700 ml-4 pl-8 py-2 space-y-12">
+            <div class="relative border-l-4 border-gray-300 ml-4 pl-8 py-2 space-y-12">
                 
                 <!-- Week 1 -->
                 <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 1: 6th April to 10th April</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">Started my journey by officially reporting to the Hire Purchase Supervision Division (HPSD), specifically under the Reporting & AKPK and FIS & Administration (SSTF) unit, right after signing all my documents with HR. I spent some time reading through the HR manual just to understand the core rules of surviving in the bank. Luckily, there was another intern named Howard in the same subunit who was in his final week. I basically stuck to him like glue—having lunch, working together, and trying to absorb all his knowledge to get a head start so I wouldn't have to bother the seniors too much once he left. We ended the week with a farewell gathering for him alongside seniors from the other subunits.</p>
-                        <!-- Horizontal Scrollable Image Gallery -->
-                        <div class="flex overflow-x-auto gap-4 pb-3 snap-x snap-mandatory scroll-smooth no-scrollbar">
-                            <div class="snap-center shrink-0 w-[85%] sm:w-[60%]">
-                                <img src="Sign_in.jpeg" alt="Week 1 memory" class="w-full h-56 object-contain rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
-                                <p class="text-xs text-center text-gray-400 mt-2">Department Onboarding</p>
-                            </div>
-                            <div class="snap-center shrink-0 w-[85%] sm:w-[60%]">
-                                <img src="Howard.jpeg" alt="Howard's Farewell" class="w-full h-56 object-contain rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
-                                <p class="text-xs text-center text-gray-400 mt-2">Farewell Gathering</p>
-                            </div>
+                    <div class="absolute -left-[43px] top-1 w-5 h-5 rounded-full bg-red-600 border-4 border-[#f4f7f6]"></div>
+                    <div class="text-sm font-bold text-gray-500 mb-2">Week 1: 6th April to 10th April</div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <p class="text-gray-700 mb-4">Started my journey by officially reporting to the Hire Purchase Supervision Division (HPSD), specifically under the Reporting & AKPK and FIS & Administration (SSTF) unit, right after signing all my documents with HR. I spent some time reading through the HR manual just to understand the core rules of surviving in the bank. Luckily, there was another intern named Howard in the same subunit who was in his final week. I basically stuck to him like glue—having lunch, working together, and trying to absorb all his knowledge to get a head start so I wouldn't have to bother the seniors too much once he left. We ended the week with a farewell gathering for him alongside seniors from the other subunits.</p>
+                        <!-- Scrollable Image Gallery -->
+                        <div class="flex overflow-x-auto gap-4 pb-2 snap-x snap-mandatory no-scrollbar">
+                            <img src="https://placehold.co/400x250/e2e8f0/64748b?text=Insert+Pic+1" alt="Week 1 memory" class="snap-center shrink-0 w-[80%] sm:w-[60%] h-48 object-cover rounded-lg border border-gray-200">
+                            <img src="https://placehold.co/400x250/e2e8f0/64748b?text=Insert+Pic+2" alt="Week 1 memory" class="snap-center shrink-0 w-[80%] sm:w-[60%] h-48 object-cover rounded-lg border border-gray-200">
                         </div>
                     </div>
                 </div>
 
-                <!-- Week 2 -->
+                <!-- Week 2 & 3 -->
                 <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 2: 13th April to 17th April</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">Reality hit as I started working on my first monthly report, the Loan in Arrears report. I had to work with a massive chunk of raw data that my senior extracted from SAS programming into Excel. From there, it was an endless cycle of data cleaning and preprocessing, dealing with a crazy amount of rounding and balancing between PBB and PIBB for Hire Purchase (HP) and Impaired Loan (IL) accounts. I did so many VLOOKUPs to pull the desired data into the final format. Finally, I had to hardcode all the formulas into static values, just because the report had to cross different departments and we had to bypass some system security access restraints.</p>
-                    </div>
-                </div>
-
-                <!-- Week 3 -->
-                <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 3: 20th April to 24th April</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">Moved on to a new beast called the Daily Recovery report, which basically tracks how much of the HP loans the bank recovers every single day compared to the previous month's outstanding balance. It involved more data cleaning, heavy rounding, and another massive dose of VLOOKUPs to transfer everything into a ready format. Watching the recovery progress slowly accumulate day by day was oddly satisfying, though.</p>
+                    <div class="absolute -left-[43px] top-1 w-5 h-5 rounded-full bg-red-600 border-4 border-[#f4f7f6]"></div>
+                    <div class="text-sm font-bold text-gray-500 mb-2">Week 2 & 3: 13th April to 24th April</div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <p class="text-gray-700 mb-4">Reality hit as I started working on my first monthly report, the Loan in Arrears report. I had to work with a massive chunk of raw data extracted from SAS programming into Excel. From there, it was an endless cycle of data cleaning and preprocessing, dealing with a crazy amount of rounding and balancing between PBB and PIBB for HP and IL accounts. The following week, I moved on to a new beast called the Daily Recovery report. It involved more data cleaning, heavy rounding, and another massive dose of VLOOKUPs to transfer everything into a ready format. Watching the recovery progress slowly accumulate day by day was oddly satisfying, though.</p>
                     </div>
                 </div>
 
                 <!-- Week 4 -->
                 <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-bank-red ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 4: 27th April to 1st May</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">Decided to take things into my own hands and started exploring Excel VBA macros on my own just to see what kind of magic they could do. For my first ever macro project, I set out to automate the tedious data transfer process for the Daily Recovery report. I sketched out a rough idea of the logic, ran into a few annoying failures during testing, but eventually got the code to successfully transfer the cleaned data. Feeling confident, I enhanced the code to automate three other related files. I even added a prompt that automatically switched the live VLOOKUP formulas into static values, letting us send the report around without any restraints.</p>
-                        
-                        <!-- Highlight Badge -->
-                        <div class="bg-bank-light dark:bg-red-900/20 border-l-4 border-bank-red p-4 rounded-r-xl">
-                            <div class="flex items-center gap-2 mb-1">
-                                <i data-lucide="zap" class="w-5 h-5 text-bank-red"></i>
-                                <span class="font-bold text-bank-red">Key Achievement</span>
-                            </div>
-                            <p class="text-sm text-gray-700 dark:text-gray-300">Successfully developed and deployed my first independent VBA macro, transitioning a highly manual daily reporting process into an automated workflow across four separate files.</p>
-                        </div>
+                    <div class="absolute -left-[43px] top-1 w-5 h-5 rounded-full bg-red-600 border-4 border-[#f4f7f6]"></div>
+                    <div class="text-sm font-bold text-gray-500 mb-2">Week 4: 27th April to 1st May</div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <p class="text-gray-700">Decided to take things into my own hands and started exploring Excel VBA macros on my own just to see what kind of magic they could do. For my first ever macro project, I set out to automate the tedious data transfer process for the Daily Recovery report. I sketched out a rough idea of the logic, ran into a few annoying failures during testing, but eventually got the code to successfully transfer the cleaned data. Feeling confident, I enhanced the code to automate three other related files. I even added a prompt that automatically switched the live VLOOKUP formulas into static values, letting us send the report around without any restraints.</p>
                     </div>
                 </div>
 
-                <!-- Week 5 -->
+                <!-- Week 5 to 9 -->
                 <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 5: 4th May to 8th May</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">Worked on the Make Model report, dealing with HP loan data based on vehicle categories. I organized the accounts by car models and vehicle conditions like new, reconditioned, and second-hand. I also performed an ageing analysis of overdue loans for each model to figure out the delinquency trends and repayment progress. Later, I went to the BNM website to download the newest monthly hire purchase statistics to update our Industry Ratio report. This let us compare the bank's HP and IL loan ratios against the official BNM figures.</p>
+                    <div class="absolute -left-[43px] top-1 w-5 h-5 rounded-full bg-red-600 border-4 border-[#f4f7f6]"></div>
+                    <div class="text-sm font-bold text-gray-500 mb-2">Week 5 to 9: 4th May to 5th June</div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <p class="text-gray-700">This month was all about leveling up my automation skills. I tackled the Make Model report, organizing HP loan data based on vehicle categories, and then immediately built my second macro to handle its complex 3D balancing rounding process (horizontal and vertical loops until the checking difference was exactly zero). Jumped straight into my third and fourth macro projects for the Loan in Arrears report, writing code to dynamically do extensive rounding adjustments and automatically VLOOKUP desired data into templates based on filename prefixes. Ended the month handling the Overall Delinquency report, making it easier for the team to do trend analysis.</p>
                     </div>
                 </div>
 
-                <!-- Week 6 -->
+                <!-- Week 10 to 12 -->
                 <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-bank-red ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 6: 11th May to 15th May</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">Started my second macro project, this time aiming to automate the Make Model report. This one was tough because it involved a 3D balancing rounding process. The macro had to process two distinct data blocks and three balancing groups (new, recon, second-hand) across nine adjustable columns. The data was separated into Total, Conventional, and Islamic categories, with each containing the three vehicle sub-categories. The script ran horizontal and vertical loops one after another until the checking difference across all of them was exactly zero.</p>
-
-                        <!-- Highlight Badge -->
-                        <div class="bg-bank-light dark:bg-red-900/20 border-l-4 border-bank-red p-4 rounded-r-xl">
-                            <div class="flex items-center gap-2 mb-1">
-                                <i data-lucide="crosshair" class="w-5 h-5 text-bank-red"></i>
-                                <span class="font-bold text-bank-red">Key Achievement</span>
-                            </div>
-                            <p class="text-sm text-gray-700 dark:text-gray-300">Engineered a complex VBA logic loop capable of achieving true zero-variance 3D balancing across multiple nested reporting categories.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Week 7 -->
-                <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 7: 18th May to 22nd May</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">Jumped into my third macro project for the Loan in Arrears report. The code helped separate different Credit Administration Centres (CAC) and branches into different rows automatically. The best part was writing the macro to do extensive rounding adjustments dynamically, so the final rounded figure matched the total figure exactly without manual tweaking.</p>
-                    </div>
-                </div>
-
-                <!-- Week 8 -->
-                <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 8: 25th May to 29th May</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">Worked on my fourth macro project, which was basically a leveled-up extension of the previous week's tool. After the rounding was done, this macro would look up the filename by prefix and automatically VLOOKUP the desired data right into the reporting template. It then changed the live formulas into values format and accurately handled the transfer across two different sheets for PBB and PIBB.</p>
-                    </div>
-                </div>
-
-                <!-- Week 9 -->
-                <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 9: 1st June to 5th June</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">Handled the Overall Delinquency report. I spent the week organizing and tabulating monthly overall delinquencies, specifically focusing on potential impaired loans and confirmed impaired loans. Compiling and structuring all this data made it much easier for the team to do trend analysis and monitor performance over time.</p>
-                    </div>
-                </div>
-
-                <!-- Week 10 -->
-                <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-bank-red ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 10: 8th June to 12th June</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">Built a pretty cool macro called the "Phone Number Formatter". IT had enhanced our data access, but sometimes when extracting from SAS, phone numbers starting with '0' would just get cut off. I scripted the macro to detect the length of the phone number and automatically add the '60' (Malaysia) or '65' (Singapore) prefix back in. My seniors then used this cleaned-up list to blast SMS reminders to hirers for late payments.</p>
-                    </div>
-                </div>
-
-                <!-- Week 11 -->
-                <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-bank-red ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 11: 15th June to 19th June</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">Developed a "Hirer/Guarantor Separator" macro to deal with a messy data situation. The bank uses three different systems to store customer info, and for new customers, they abandoned the old system entirely. Because of this, the customer list was scattered across the systems with duplicate data. My macro identified the duplicate hirers and guarantors, eliminated them, and stored just one clean copy of their info. This saved the bank a lot of money, since blasting the same SMS multiple times to duplicate numbers isn't cheap.</p>
-
-                        <!-- Highlight Badge -->
-                        <div class="bg-bank-light dark:bg-red-900/20 border-l-4 border-bank-red p-4 rounded-r-xl">
-                            <div class="flex items-center gap-2 mb-1">
-                                <i data-lucide="trending-down" class="w-5 h-5 text-bank-red"></i>
-                                <span class="font-bold text-bank-red">Key Achievement</span>
-                            </div>
-                            <p class="text-sm text-gray-700 dark:text-gray-300">Directly impacted the department's bottom line by building a duplication-filtering tool that significantly reduced unnecessary SMS and email blasting costs.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Week 12 -->
-                <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-bank-red ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 12: 22nd June to 26th June</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">More phone number drama, which led to my "SMS/Email Phone Formatter (Post-Separation)" macro. When IT extracted data to the database, they set a hard cut after 11 digits. Since numbers like 011- contain 12 digits, that extra 12th digit was spilling over into the email column, creating fake phone numbers and corrupted emails. My macro identified these 12-digit numbers and pulled the digit back from the email string, resulting in correct, efficient lists for email and SMS blasting.</p>
-
-                        <!-- Highlight Badge -->
-                        <div class="bg-bank-light dark:bg-red-900/20 border-l-4 border-bank-red p-4 rounded-r-xl">
-                            <div class="flex items-center gap-2 mb-1">
-                                <i data-lucide="bug" class="w-5 h-5 text-bank-red"></i>
-                                <span class="font-bold text-bank-red">Key Achievement</span>
-                            </div>
-                            <p class="text-sm text-gray-700 dark:text-gray-300">Successfully diagnosed and built a programmatic patch for a systemic IT extraction bug that was corrupting multi-column customer contact databases.</p>
-                        </div>
+                    <div class="absolute -left-[43px] top-1 w-5 h-5 rounded-full bg-red-600 border-4 border-[#f4f7f6]"></div>
+                    <div class="text-sm font-bold text-gray-500 mb-2">Week 10 to 12: 8th June to 26th June</div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="font-bold text-lg mb-2">The Data Cleansing Era</h3>
+                        <p class="text-gray-700">Spent these weeks solving major database extraction bugs for the IT division. First, I built a "Phone Number Formatter" macro to detect and fix phone numbers where the starting '0' was cut off by adding '60' or '65' prefixes. Then, I developed a "Hirer/Guarantor Separator" to filter out scattered duplicate data across three different legacy systems, saving the bank serious money on SMS blasting costs. Finally, I built a post-separation formatter to fix a bug where 12-digit phone numbers were spilling over and corrupting the email column in the database.</p>
                     </div>
                 </div>
 
                 <!-- Week 13 -->
                 <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 13: 29th June to 3rd July</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">Worked on a new weekly workflow macro called the "Multi-Category Master to Target Sorter". It processed five different categories (0-7, 8-30, 1mth, CA, IL) from a master file and separated them into their corresponding target files based on eight different CACs (CACKL, CACCCE, CACJB, CACPG, CACBTW, CACIPOH, CACKLG, and NONCAC). In the middle of all this, I bumped into a massive PBB fire drill. The alarm went off in the evening, and we had to follow procedure, slowly climbing down 22 flights of stairs to head to the open parking lot.</p>
-                        <!-- Horizontal Scrollable Image Gallery -->
-                        <div class="flex overflow-x-auto gap-4 pb-3 snap-x snap-mandatory scroll-smooth no-scrollbar">
-                            <div class="snap-center shrink-0 w-[85%] sm:w-[60%]">
-                                <img src="https://placehold.co/600x400/fdf2f2/e31837?text=Fire+Drill+Stairs" alt="Fire drill stairs" class="w-full h-56 object-cover rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
-                                <p class="text-xs text-center text-gray-400 mt-2">Climbing down 22 floors</p>
-                            </div>
-                            <div class="snap-center shrink-0 w-[85%] sm:w-[60%]">
-                                <img src="https://placehold.co/600x400/fdf2f2/e31837?text=Parking+Lot+Assembly" alt="Parking lot assembly" class="w-full h-56 object-cover rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
-                                <p class="text-xs text-center text-gray-400 mt-2">Assembly Point</p>
-                            </div>
+                    <div class="absolute -left-[43px] top-1 w-5 h-5 rounded-full bg-red-600 border-4 border-[#f4f7f6]"></div>
+                    <div class="text-sm font-bold text-gray-500 mb-2">Week 13: 29th June to 3rd July</div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <p class="text-gray-700 mb-4">Worked on a new weekly workflow macro called the "Multi-Category Master to Target Sorter" which processed five different ageing categories and separated them into target files for eight different Credit Administration Centres. In the middle of all this, I bumped into a massive PBB fire drill. The alarm went off in the evening, and we had to follow procedure, slowly climbing down 22 flights of stairs to head to the open parking lot.</p>
+                        <!-- Scrollable Image Gallery -->
+                        <div class="flex overflow-x-auto gap-4 pb-2 snap-x snap-mandatory no-scrollbar">
+                            <img src="https://placehold.co/400x250/e2e8f0/64748b?text=Fire+Drill+1" alt="Fire drill memory" class="snap-center shrink-0 w-[80%] sm:w-[60%] h-48 object-cover rounded-lg border border-gray-200">
+                            <img src="https://placehold.co/400x250/e2e8f0/64748b?text=Fire+Drill+2" alt="Fire drill memory" class="snap-center shrink-0 w-[80%] sm:w-[60%] h-48 object-cover rounded-lg border border-gray-200">
                         </div>
                     </div>
                 </div>
 
-                <!-- Week 14 -->
+                <!-- Week 14 to 17 -->
                 <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 14: 6th July to 10th July</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">Took on the HP_1mil report, zooming in on accounts with outstanding balances above 1 million. We had to check their B-score (Behavioral) to see the possibility of them turning into Impaired Loans in the future. After cleaning and transforming the data, I compiled these big accounts into a watchlist. The list gets updated monthly, so any account whose balance dropped below 1 mil or whose B-score improved to higher than 'D' was removed.</p>
-                    </div>
-                </div>
-
-                <!-- Week 15 -->
-                <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 15: 13th July to 17th July</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">Moved on to the big leagues with the HP/FSF_3mil report. This one deals with accounts over 3 million that we had to pinpoint and view as potential IL accounts. I organized and sorted them in descending order by balance, filtering out anything below 3 million. After getting the data into a clean format, we zoomed in to observe their 'mtharr' and 'dayarr' (months and days in arrears) to mark if they were at high risk, updating their B-scores from time to time.</p>
-                    </div>
-                </div>
-
-                <!-- Week 16 -->
-                <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 16: 20th July to 24th July</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">Built the "Base Listing Multi-Category Sorter" macro. It was similar to my week 13 macro but done monthly, taking new elements like NEWCA and NEWIL accounts into consideration. I compiled and organized the overdue accounts into buckets (0-7, 8-30, 1MTH, CA, NEWCA, IL, NEWIL). We closely monitored how many new accounts transitioned into newly Close Attention (CA) or Impaired Loan (IL) status, which helped the managers and heads make recovery decisions.</p>
-                    </div>
-                </div>
-
-                <!-- Week 17 -->
-                <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 17: 27th July to 31st July</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">Worked on the Restructure & Reschedule (R&R) report. This involved dealing with accounts where hirers lengthened their loan tenure to lower their monthly installments while keeping the main contract terms the same. I separated them out with different code numbers and recalculated the overall delinquency ratio since it changes when an account transitions into R&R. I also analyzed the frequency of R&R approvals, performed ageing analysis, and tracked the nursing period on these cases before reporting the monthly figures to the management.</p>
+                    <div class="absolute -left-[43px] top-1 w-5 h-5 rounded-full bg-red-600 border-4 border-[#f4f7f6]"></div>
+                    <div class="text-sm font-bold text-gray-500 mb-2">Week 14 to 17: 6th July to 31st July</div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <p class="text-gray-700">Graduated to handling high-value accounts. I took on the HP_1mil and HP/FSF_3mil reports, zooming in on accounts with outstanding balances above 1 million and 3 million respectively. I tracked their Behavioral scores (B-scores) and days in arrears to flag high-risk accounts. I also built the "Base Listing Multi-Category Sorter" macro to track how many accounts transitioned into newly Close Attention (CA) or Impaired Loan (IL) status. Ended July managing the Restructure & Reschedule (R&R) report, recalculating delinquency ratios and tracking mandatory nursing periods.</p>
                     </div>
                 </div>
 
                 <!-- Week 18 -->
                 <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 18: 3rd August to 7th August</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">Assisted with the data transformation for Expected Credit Loss (ECL) data. I analyzed accounts that either improved (moving from stage 3 to stage 2, then back to stage 1) or worsened. I transferred the cleaned data into the report template, submitted it to my senior for checking, and sent it to our external auditor EY for justification. The highlight of the week was joining the massive 60th anniversary Public Bank event at the HQ—enjoying the food, fireworks, and a drone show.</p>
-                        <!-- Horizontal Scrollable Image Gallery -->
-                        <div class="flex overflow-x-auto gap-4 pb-3 snap-x snap-mandatory scroll-smooth no-scrollbar">
-                            <div class="snap-center shrink-0 w-[85%] sm:w-[60%]">
-                                <img src="https://placehold.co/600x400/fdf2f2/e31837?text=60th+Anniversary+HQ" alt="60th anniversary event" class="w-full h-56 object-cover rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
-                                <p class="text-xs text-center text-gray-400 mt-2">Public Bank 60th Anniversary</p>
-                            </div>
-                            <div class="snap-center shrink-0 w-[85%] sm:w-[60%]">
-                                <img src="https://placehold.co/600x400/fdf2f2/e31837?text=Drone+Show+%26+Fireworks" alt="Drone show at event" class="w-full h-56 object-cover rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
-                                <p class="text-xs text-center text-gray-400 mt-2">Drone Show & Fireworks</p>
-                            </div>
+                    <div class="absolute -left-[43px] top-1 w-5 h-5 rounded-full bg-red-600 border-4 border-[#f4f7f6]"></div>
+                    <div class="text-sm font-bold text-gray-500 mb-2">Week 18: 3rd August to 7th August</div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <p class="text-gray-700 mb-4">Assisted with the data transformation for Expected Credit Loss (ECL) data. I analyzed accounts that either improved or worsened, transferred the cleaned data into the report template, and submitted it to my senior for checking before sending it to our external auditor EY for justification. The absolute highlight of the week was joining the massive 60th anniversary Public Bank event at the HQ—enjoying the food, fireworks, and a drone show.</p>
+                        <!-- Scrollable Image Gallery -->
+                        <div class="flex overflow-x-auto gap-4 pb-2 snap-x snap-mandatory no-scrollbar">
+                            <img src="https://placehold.co/400x250/e2e8f0/64748b?text=PBB+Event+1" alt="Event memory" class="snap-center shrink-0 w-[80%] sm:w-[60%] h-48 object-cover rounded-lg border border-gray-200">
+                            <img src="https://placehold.co/400x250/e2e8f0/64748b?text=Drone+Show" alt="Event memory" class="snap-center shrink-0 w-[80%] sm:w-[60%] h-48 object-cover rounded-lg border border-gray-200">
+                            <img src="https://placehold.co/400x250/e2e8f0/64748b?text=Food+%26+Team" alt="Event memory" class="snap-center shrink-0 w-[80%] sm:w-[60%] h-48 object-cover rounded-lg border border-gray-200">
                         </div>
                     </div>
                 </div>
 
-                <!-- Week 19 -->
+                <!-- Week 19 to 23 -->
                 <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 19: 10th August to 14th August</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">Helped my seniors compile the draft 2026 yearly report of Hire Purchase to send to BNM. I assisted in preparing and printing all the required documents following the strict list given by BNM. The report included stuff like the net presentation of HP receivables, Months-in-Arrears (MIA) schedules, and Three-Stage Impairment Migrations. I filed them all together and submitted the stack to the manager for checking.</p>
-                    </div>
-                </div>
-
-                <!-- Week 20 -->
-                <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-bank-red ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 20: 17th August to 21st August</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">Coded a new interactive project called "IL Ratio Sensitivity & Scenario Analysis". It was a tool to forecast the future IL ratio if the impaired loan accounts were to increase. I applied a Userform in Excel to create a simple, user-friendly interface where the team could punch in desired and expected values. The macro would then generate a list of possible IL ratios and tabulate them automatically into a new sheet. The finished report helped managers figure out alternative ways to reduce the IL ratio.</p>
-
-                        <!-- Highlight Badge -->
-                        <div class="bg-bank-light dark:bg-red-900/20 border-l-4 border-bank-red p-4 rounded-r-xl">
-                            <div class="flex items-center gap-2 mb-1">
-                                <i data-lucide="bar-chart-3" class="w-5 h-5 text-bank-red"></i>
-                                <span class="font-bold text-bank-red">Key Achievement</span>
-                            </div>
-                            <p class="text-sm text-gray-700 dark:text-gray-300">Successfully developed a dynamic UI forecasting tool that allowed management to model future economic scenarios and adjust Impaired Loan strategies proactively.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Week 21 -->
-                <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 21: 24th August to 28th August</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">Handled the CA Breakdown report. I analyzed potential impaired loans by classifying them based on the hirers' contact status—like promised to pay, cannot be contacted, not responsive, or refused to pay. I helped profile their repayment behavior based on demographic and financial characteristics like age, income level, and credit score. I also worked on the CA Tracking report to analyze payment trends (habitual vs non-habitual vs IL accounts), compiling it all to compare against the previous month and evaluate the payment percentage.</p>
-                    </div>
-                </div>
-
-                <!-- Week 22 -->
-                <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 22: 31st August to 4th September</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">Worked on the Margin Earnterm report, organizing and analyzing the margins and earning terms for total and impaired HP loans. I categorized the loans under margin ranges (from below 70% up to 85% and above) and compiled them by earning terms (from 3 years & below, up to 8 to 9 years). I also tackled the Luxury Car report, classifying high-end accounts by car model. We compared the IL and total HP loans of these models to see how the luxury segment was actually performing.</p>
-                    </div>
-                </div>
-
-                <!-- Week 23 -->
-                <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-bank-red ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 23: 7th September to 11th September</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">Brought out the advanced Excel functions to highly improve the efficiency of the HP/FSF_3mil report process. I used the "UNIQUE" function to instantly pull distinct lists and remove duplicates, and followed it up with the "LET" function to assign names to calculation results, making complex formulas way easier to read. I also applied Power Query to do data transformation, loading them into connections and appending tables with the same variables into one massive table. I copied the results into the complete report format and set up conditional formatting to automatically highlight specific outcomes.</p>
-
-                        <!-- Highlight Badge -->
-                        <div class="bg-bank-light dark:bg-red-900/20 border-l-4 border-bank-red p-4 rounded-r-xl">
-                            <div class="flex items-center gap-2 mb-1">
-                                <i data-lucide="function-square" class="w-5 h-5 text-bank-red"></i>
-                                <span class="font-bold text-bank-red">Key Achievement</span>
-                            </div>
-                            <p class="text-sm text-gray-700 dark:text-gray-300">Overhauled a major data pipeline by integrating Power Query and advanced dynamic arrays (`UNIQUE`, `LET`), dramatically increasing processing speed and report readability.</p>
-                        </div>
+                    <div class="absolute -left-[43px] top-1 w-5 h-5 rounded-full bg-red-600 border-4 border-[#f4f7f6]"></div>
+                    <div class="text-sm font-bold text-gray-500 mb-2">Week 19 to 23: 10th August to 11th September</div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <p class="text-gray-700">A heavy analytical phase. Helped compile the draft 2026 yearly report of Hire Purchase for BNM, ensuring all strict requirements were met. Coded a brand new interactive project called "IL Ratio Sensitivity & Scenario Analysis," applying a Userform in Excel to forecast future IL ratios and help managers plan strategies. Handled the CA Breakdown, Margin Earnterm, and Luxury Car reports. By week 23, I brought out the advanced Excel functions to completely optimize workflows—using `UNIQUE`, `LET`, and Power Query to process data into one massive unified table.</p>
                     </div>
                 </div>
 
                 <!-- Week 24 -->
                 <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 24: 14th September to 18th September</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">Went back into all the macro projects I had built over the internship to do some final housekeeping. I enhanced them so they would run smoothly and avoid crashing during runtime. I made slight amendments based on new updates requested by the manager and spent time showing my seniors how to run each macro in the correct order. I set them all up in a single folder with unique names so it would be super convenient for the team to use after I left. Ended the week having an early farewell dinner with the seniors from the other subunits.</p>
-                        <!-- Horizontal Scrollable Image Gallery -->
-                        <div class="flex overflow-x-auto gap-4 pb-3 snap-x snap-mandatory scroll-smooth no-scrollbar">
-                            <div class="snap-center shrink-0 w-[85%] sm:w-[60%]">
-                                <img src="https://placehold.co/600x400/fdf2f2/e31837?text=Early+Farewell+Dinner" alt="Farewell dinner" class="w-full h-56 object-cover rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
-                                <p class="text-xs text-center text-gray-400 mt-2">Dinner with Subunit Seniors</p>
-                            </div>
+                    <div class="absolute -left-[43px] top-1 w-5 h-5 rounded-full bg-red-600 border-4 border-[#f4f7f6]"></div>
+                    <div class="text-sm font-bold text-gray-500 mb-2">Week 24: 14th September to 18th September</div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <p class="text-gray-700 mb-4">Went back into all the macro projects I had built over the internship to do some final housekeeping. I enhanced them so they would run smoothly and avoid crashing during runtime. I spent time showing my seniors how to run each macro in the correct order, setting them all up in a single folder with unique names so it would be super convenient for the team to use after I left. Ended the week having an early farewell dinner with the seniors from the other subunits.</p>
+                        <!-- Scrollable Image Gallery -->
+                        <div class="flex overflow-x-auto gap-4 pb-2 snap-x snap-mandatory no-scrollbar">
+                            <img src="https://placehold.co/400x250/e2e8f0/64748b?text=Farewell+Dinner+1" alt="Dinner memory" class="snap-center shrink-0 w-[80%] sm:w-[60%] h-48 object-cover rounded-lg border border-gray-200">
+                            <img src="https://placehold.co/400x250/e2e8f0/64748b?text=Farewell+Dinner+2" alt="Dinner memory" class="snap-center shrink-0 w-[80%] sm:w-[60%] h-48 object-cover rounded-lg border border-gray-200">
                         </div>
                     </div>
                 </div>
 
                 <!-- Week 25 & 26 -->
                 <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-bank-red ring-4 ring-gray-50 dark:ring-gray-900"></div>
-                    <div class="text-sm font-bold text-gray-400 dark:text-gray-500 mb-3 tracking-wide uppercase">Week 25 & 26: 21st September to 30th September</div>
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">The final stretch! We welcomed a new intern who was also joining for six months. I guided her through the tasks I had been working on, showed her around the department, and explained all the necessary Hire Purchase knowledge so she could understand how the whole team functions. I had a great farewell lunch with the team and received some awesome surprises, gifts, and cakes on my last day of work. After an amazing six months, I finally signed off as an intern.</p>
-                        <!-- Horizontal Scrollable Image Gallery -->
-                        <div class="flex overflow-x-auto gap-4 pb-3 snap-x snap-mandatory scroll-smooth no-scrollbar">
-                            <div class="snap-center shrink-0 w-[85%] sm:w-[60%]">
-                                <img src="https://placehold.co/600x400/fdf2f2/e31837?text=Team+Farewell+Lunch" alt="Team Lunch" class="w-full h-56 object-cover rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
-                                <p class="text-xs text-center text-gray-400 mt-2">Department Farewell Lunch</p>
-                            </div>
-                            <div class="snap-center shrink-0 w-[85%] sm:w-[60%]">
-                                <img src="https://placehold.co/600x400/fdf2f2/e31837?text=Last+Day+Gifts+%26+Cakes" alt="Last day gifts" class="w-full h-56 object-cover rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
-                                <p class="text-xs text-center text-gray-400 mt-2">Surprise Gifts & Cake</p>
-                            </div>
+                    <div class="absolute -left-[43px] top-1 w-5 h-5 rounded-full bg-red-600 border-4 border-[#f4f7f6]"></div>
+                    <div class="text-sm font-bold text-gray-500 mb-2">Week 25 & 26: 21st September to 30th September</div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <p class="text-gray-700 mb-4">The final stretch! We welcomed a new intern who was also joining for six months. I guided her through the tasks I had been working on, showed her around the department, and explained all the necessary Hire Purchase knowledge so she could understand how the whole team functions. I had a great farewell lunch with the team and received some awesome surprises, gifts, and cakes on my last day of work. After an amazing six months, I finally signed off as an intern.</p>
+                        <!-- Scrollable Image Gallery -->
+                        <div class="flex overflow-x-auto gap-4 pb-2 snap-x snap-mandatory no-scrollbar">
+                            <img src="https://placehold.co/400x250/e2e8f0/64748b?text=Last+Day+Gifts" alt="Farewell gifts" class="snap-center shrink-0 w-[80%] sm:w-[60%] h-48 object-cover rounded-lg border border-gray-200">
+                            <img src="https://placehold.co/400x250/e2e8f0/64748b?text=Team+Lunch" alt="Team lunch" class="snap-center shrink-0 w-[80%] sm:w-[60%] h-48 object-cover rounded-lg border border-gray-200">
+                            <img src="https://placehold.co/400x250/e2e8f0/64748b?text=Signing+Off" alt="Last day" class="snap-center shrink-0 w-[80%] sm:w-[60%] h-48 object-cover rounded-lg border border-gray-200">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- KEY PROJECTS TAB -->
+        <!-- KEY ACHIEVEMENTS TAB -->
         <section id="projects" class="tab-content">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
-                <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 rounded-xl bg-gray-50 dark:bg-gray-700 flex items-center justify-center mb-5 border border-gray-100 dark:border-gray-600">
-                        <i data-lucide="calculator" class="w-6 h-6 text-bank-red"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 dark:text-white">Financial Rounding & Balancing</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">Developed complex algorithms to automate strict financial rounding and variance correction across multi-segment reporting sheets.</p>
-                    <ul class="space-y-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-                        <li class="flex items-start gap-2">
-                            <i data-lucide="arrow-right" class="w-4 h-4 text-bank-red shrink-0 mt-0.5"></i>
-                            <span><strong>Sudoku Rounding:</strong> Solved a 2D mismatch problem using array-based "Plan-then-Apply" logic to satisfy vertical and horizontal zero-variance constraints simultaneously without cascading oscillation.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i data-lucide="arrow-right" class="w-4 h-4 text-bank-red shrink-0 mt-0.5"></i>
-                            <span><strong>Spacing & Correction Tool:</strong> Built a 3-step macro that dynamically spaces section titles, applies rounding formulas, and automatically targets the closest remainder to correct variance.</span>
-                        </li>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="text-3xl mb-3">⚙️</div>
+                    <h3 class="text-xl font-bold mb-2">VBA Automation Suite</h3>
+                    <p class="text-gray-600 mb-3">Developed a comprehensive suite of VBA macros to eliminate manual reporting. Automated the Daily Recovery, Make Model, and Loan in Arrears reports.</p>
+                    <ul class="list-disc pl-5 text-sm text-gray-500">
+                        <li>Achieved zero-variance 3D balancing.</li>
+                        <li>Automated multi-file data appending & dynamic rounding.</li>
+                        <li>Converted live formulas to static outputs for cross-department security.</li>
                     </ul>
                 </div>
 
-                <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 rounded-xl bg-gray-50 dark:bg-gray-700 flex items-center justify-center mb-5 border border-gray-100 dark:border-gray-600">
-                        <i data-lucide="database" class="w-6 h-6 text-bank-red"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 dark:text-white">Data Cleansing Architecture</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">Built extraction repair tools to fix critical IT bugs across legacy systems, standardizing contact data for 300,000+ rows and saving operational costs.</p>
-                    <ul class="space-y-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-                        <li class="flex items-start gap-2">
-                            <i data-lucide="arrow-right" class="w-4 h-4 text-bank-red shrink-0 mt-0.5"></i>
-                            <span><strong>Phone Number & Postcode Extractors:</strong> Recovered dropped zeros, mapped prefixes to specific states, and pulled exact 5-digit postcodes from messy, free-text Malaysian addresses.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i data-lucide="arrow-right" class="w-4 h-4 text-bank-red shrink-0 mt-0.5"></i>
-                            <span><strong>Hirer/Guarantor Separator:</strong> Used Dictionary/Collection objects and two-tier address matching to split duplicated accounts, then deployed a post-separation formatter to fix 11-digit truncation bugs corrupting email columns.</span>
-                        </li>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="text-3xl mb-3">🧹</div>
+                    <h3 class="text-xl font-bold mb-2">Data Cleansing Architecture</h3>
+                    <p class="text-gray-600 mb-3">Built tools like the "Phone Number Formatter" and "Hirer/Guarantor Separator" to fix critical IT extraction bugs across legacy systems.</p>
+                    <ul class="list-disc pl-5 text-sm text-gray-500">
+                        <li>Fixed 12-digit truncation bugs corrupting email databases.</li>
+                        <li>Merged scattered duplicates into single source-of-truth profiles.</li>
+                        <li>Significantly reduced operational costs for SMS blasting.</li>
                     </ul>
                 </div>
 
-                <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 rounded-xl bg-gray-50 dark:bg-gray-700 flex items-center justify-center mb-5 border border-gray-100 dark:border-gray-600">
-                        <i data-lucide="git-merge" class="w-6 h-6 text-bank-red"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 dark:text-white">Automated Report Routing</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">Replaced massive manual copy-paste workflows with multi-file sorting macros that detect, format, and route master data to specific target files.</p>
-                    <ul class="space-y-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-                        <li class="flex items-start gap-2">
-                            <i data-lucide="arrow-right" class="w-4 h-4 text-bank-red shrink-0 mt-0.5"></i>
-                            <span><strong>Multi-Category Master→Target Sorter:</strong> Automated the sorting and distribution of 5 loan categories across 8 branch sheets simultaneously, replacing 48 separate paste operations.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i data-lucide="arrow-right" class="w-4 h-4 text-bank-red shrink-0 mt-0.5"></i>
-                            <span><strong>Base Listing Sorter:</strong> Used embedded VLOOKUP logic to identify new disbursements entering arrears, automatically routing them to dedicated NEWCA/NEWIL files while maintaining dynamic row formatting.</span>
-                        </li>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="text-3xl mb-3">📈</div>
+                    <h3 class="text-xl font-bold mb-2">IL Ratio Scenario Analysis</h3>
+                    <p class="text-gray-600 mb-3">Created an interactive Excel UserForm to help management forecast Impaired Loan ratios against various economic conditions.</p>
+                    <ul class="list-disc pl-5 text-sm text-gray-500">
+                        <li>Allowed custom input of expected target values.</li>
+                        <li>Automatically generated tabulated lists of potential future IL ratios.</li>
+                        <li>Directly supported strategic decision-making.</li>
                     </ul>
                 </div>
 
-                <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 rounded-xl bg-gray-50 dark:bg-gray-700 flex items-center justify-center mb-5 border border-gray-100 dark:border-gray-600">
-                        <i data-lucide="line-chart" class="w-6 h-6 text-bank-red"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 dark:text-white">IL Ratio Scenario Analysis</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">Created an interactive forecasting tool to help management visualize Impaired Loan ratios against various economic conditions and portfolio growths.</p>
-                    <ul class="space-y-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-                        <li class="flex items-start gap-2">
-                            <i data-lucide="arrow-right" class="w-4 h-4 text-bank-red shrink-0 mt-0.5"></i>
-                            <span><strong>Interactive UI:</strong> Engineered a custom Excel UserForm to easily input projected HP growth, target ratios, and expected write-offs.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i data-lucide="arrow-right" class="w-4 h-4 text-bank-red shrink-0 mt-0.5"></i>
-                            <span><strong>Strategic Output:</strong> Automatically generates tabulated forecast sheets showing the exact net IL increment required to hit target ratios, complete with dynamic red accounting brackets for negative impacts.</span>
-                        </li>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="text-3xl mb-3">⚡</div>
+                    <h3 class="text-xl font-bold mb-2">Advanced Process Optimization</h3>
+                    <p class="text-gray-600 mb-3">Upgraded massive workflows like the HP/FSF_3mil report and Expected Credit Loss (ECL) data transformation.</p>
+                    <ul class="list-disc pl-5 text-sm text-gray-500">
+                        <li>Implemented dynamic array functions (`UNIQUE`, `LET`).</li>
+                        <li>Leveraged Power Query for multi-table variable appending.</li>
+                        <li>Built conditional formatting engines to flag high-risk portfolios.</li>
                     </ul>
                 </div>
 
             </div>
         </section>
 
-    </div>
+    </main>
 
+    <!-- Simple JavaScript for Tab Switching -->
     <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-
-        // Tab Switching Logic
         function switchTab(tabId, btn) {
             // Hide all content
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            // Reset all buttons
+            // Remove active state from all buttons
             document.querySelectorAll('.tab-btn').forEach(el => {
-                el.classList.remove('active', 'text-bank-red', 'border-bank-red');
-                el.classList.add('text-gray-500', 'dark:text-gray-400', 'border-transparent');
+                el.classList.remove('active', 'border-red-600', 'text-white');
+                el.classList.add('border-transparent', 'text-gray-400');
             });
             
             // Show selected content
             document.getElementById(tabId).classList.add('active');
-            // Activate clicked button
-            btn.classList.add('active', 'text-bank-red', 'border-bank-red');
-            btn.classList.remove('text-gray-500', 'dark:text-gray-400', 'border-transparent');
+            // Add active state to clicked button
+            btn.classList.add('active', 'border-red-600', 'text-white');
+            btn.classList.remove('border-transparent', 'text-gray-400');
         }
-
-        // Dark Mode Toggle Logic
-        function toggleTheme() {
-            const html = document.documentElement;
-            const themeIcon = document.getElementById('theme-icon');
-            
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                themeIcon.setAttribute('data-lucide', 'moon');
-            } else {
-                html.classList.add('dark');
-                themeIcon.setAttribute('data-lucide', 'sun');
-            }
-            lucide.createIcons();
-        }
+        
+        // Initialize the first tab as active on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstBtn = document.querySelector('.tab-btn');
+            firstBtn.classList.add('active', 'border-red-600', 'text-white');
+            firstBtn.classList.remove('border-transparent', 'text-gray-400');
+        });
     </script>
 </body>
 </html>
