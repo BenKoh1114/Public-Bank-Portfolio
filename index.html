@@ -42,9 +42,20 @@
                 </div>
                 <p class="text-gray-500 dark:text-gray-400 text-lg">Public Bank Berhad &bull; Apr 2026 - Sep 2026</p>
             </div>
-            <button onclick="toggleTheme()" class="p-3 rounded-full bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all focus:outline-none focus:ring-2 focus:ring-bank-red">
-                <i data-lucide="moon" id="theme-icon" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i>
-            </button>
+            
+            <!-- Controls Container (Music + Dark Mode) -->
+            <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+                
+                <!-- Music Player -->
+                <audio controls loop class="h-10 w-48 sm:w-56 opacity-80 hover:opacity-100 transition-opacity">
+                    <!-- CHANGE "music.mp3" TO YOUR EXACT FILENAME -->
+                    <source src="blue(instrumental).mp3" type="audio/mpeg">
+                </audio>
+
+                <button onclick="toggleTheme()" class="p-3 shrink-0 rounded-full bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all focus:outline-none focus:ring-2 focus:ring-bank-red">
+                    <i data-lucide="moon" id="theme-icon" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i>
+                </button>
+            </div>
         </div>
 
         <!-- Navigation Tabs -->
